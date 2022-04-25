@@ -7,7 +7,6 @@ function Cell(i, j, w){
     this.bomb = false;
     this.revealed = false;
     this.neighborCount = 0;
-
   }
 
   Cell.prototype.show = function(){
@@ -27,7 +26,6 @@ function Cell(i, j, w){
                 fill(0);
                 text(this.neighborCount, this.x + this.w*0.5, this.y + this.w*0.75);
             }
-           
         }
     }
     noFill();
