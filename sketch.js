@@ -23,6 +23,7 @@ function setup() {
       grid[i][j].bomb = true;
       index++;
     }
+    
   }
   for (let index = 0; index < rows; index++) {
     for (let jndex = 0; jndex < cols; jndex++) {

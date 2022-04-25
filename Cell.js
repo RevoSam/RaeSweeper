@@ -5,6 +5,7 @@ function Cell(i, j, w){
     this.y = j * w;
     this.w = w;
     this.bomb = false;
+    
     this.revealed = false;
     this.neighborCount = 0;
   }
