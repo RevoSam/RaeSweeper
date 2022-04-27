@@ -5,32 +5,45 @@ function Cell(i, j, w){
     this.y = j * w;
     this.w = w;
     this.bomb = false;
-    
+    this.flag = false;
     this.revealed = false;
     this.neighborCount = 0;
   }
 
   Cell.prototype.show = function(){
     if (this.revealed)
-    {   
+    {
         if (this.bomb)
         {
-            fill(100);
-            ellipse(this.x + this.w * 0.5, this.y + this.w * 0.5, + this.w * 0.5);
+            image(heart, this.x + this.w * 0.25, this.y + this.w * 0.25, this.w * 0.5, this.w * 0.5);
         }
         else{
-            fill(200);
+            fill(150);
             rect(this.x, this.y, this.w, this.w);
             if (this.neighborCount > 0)
             {
+                fill(200);
+                rect(this.x, this.y, this.w, this.w);
                 textAlign(CENTER);
+                textSize(this.w * 0.5);
                 fill(0);
                 text(this.neighborCount, this.x + this.w*0.5, this.y + this.w*0.75);
             }
         }
     }
+    if (this.flag)
+    {
+        // fill(200);
+        // rect(this.x, this.y, this.w, this.w);
+        // textAlign(CENTER);
+        // textSize(this.w * 0.5);
+        // fill(0);
+        // text('X', this.x + this.w*0.5, this.y + this.w*0.75);
+        image(flagIcon, this.x + this.w * 0.25, this.y + this.w * 0.25, this.w * 0.5, this.w * 0.5);
+    }
     noFill();
     rect(this.x, this.y, this.w, this.w);
+     
   }
 
   Cell.prototype.contains = function (x, y){
