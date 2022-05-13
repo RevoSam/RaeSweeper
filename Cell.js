@@ -39,7 +39,7 @@ function Cell(i, j, w){
         // textSize(this.w * 0.5);
         // fill(0);
         // text('X', this.x + this.w*0.5, this.y + this.w*0.75);
-        image(flagIcon, this.x + this.w * 0.25, this.y + this.w * 0.25, this.w * 0.5, this.w * 0.5);
+        image(heart, this.x + this.w * 0.25, this.y + this.w * 0.25, this.w * 0.5, this.w * 0.5);
     }
     noFill();
     rect(this.x, this.y, this.w, this.w);
