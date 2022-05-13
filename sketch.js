@@ -138,6 +138,8 @@ function create2D(rows, cols)
 
 function resetGame()
 {
+  button.addClass("notFlagged");
+  button.removeClass("flagged");
   flag = false;
   for (let index = 0; index < rows; index++) {
     for (let jndex = 0; jndex < cols; jndex++) {
