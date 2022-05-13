@@ -53,3 +53,13 @@ border-color: rgba(255,255,255,1);
 #buttons{
   width: fit-content;
 }
+
+.flagged{
+  background-color: #525252;
+  color:#d4d800
+}
+
+.notFlagged{
+  color:#FFFFFF;
+  background-color: #9a4ef1;
+}

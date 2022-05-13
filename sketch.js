@@ -2,7 +2,7 @@
 var grid;
 var cols;
 var rows;
-var w = 39;
+var w = 50;
 var totalBombs = 15;
 
 let timer = 0;
@@ -29,6 +29,7 @@ function setup() {
   button.mousePressed(FlagTime);
   resetButton.mousePressed(resetGame);
   button.addClass("button");
+  button.addClass("notFlagged");
   resetButton.addClass("button");
   resetButton.attribute("ID", "reset");
   
@@ -47,8 +48,8 @@ function setup() {
   
   
   
-  cols = floor(width / w);
-  rows = floor(height / w);
+  cols = floor(width/w);
+  rows = floor(height/w);
   grid = create2D(rows, cols);
 
   resetGame();
@@ -58,9 +59,18 @@ function setup() {
 function FlagTime()
 {
   if (flag)
+  {
+    button.addClass("notFlagged");
+    button.removeClass("flagged");
     flag = false;
+  }
+    
   else
+  {
+    button.addClass("flagged");
+    button.removeClass("notFlagged");
     flag = true;
+  }
 }
 
 function draw() {
@@ -128,6 +138,7 @@ function create2D(rows, cols)
 
 function resetGame()
 {
+  flag = false;
   for (let index = 0; index < rows; index++) {
     for (let jndex = 0; jndex < cols; jndex++) {
       grid[index][jndex] = new Cell(index, jndex, w);
