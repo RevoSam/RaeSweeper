@@ -1,4 +1,3 @@
-
 var grid;
 var cols;
 var rows;
@@ -13,10 +12,9 @@ let button;
 let resetButton;
 let buttonsDiv;
 
-function preload()
-{
-  heart = loadImage('Pictures/Love.svg');
-  flagIcon = loadImage('Pictures/Flag.svg');
+function preload() {
+  heart = loadImage("Pictures/Ei-heart.svg");
+  flagIcon = loadImage("Pictures/Flag.svg");
 }
 
 function setup() {
@@ -32,41 +30,32 @@ function setup() {
   button.addClass("notFlagged");
   resetButton.addClass("button");
   resetButton.attribute("ID", "reset");
-  
+
   let current = new Date();
 
-  days = Math.ceil((Math.abs(birthday - current)/ (1000 * 60 * 60 * 24)));
+  days = Math.ceil(Math.abs(birthday - current) / (1000 * 60 * 60 * 24));
   //timer = Math.ceil((Math.abs(birthday - current)) / (1000 * 60));
 
-
-  myConvas = createCanvas(w*10+1, w*10+1);
+  myConvas = createCanvas(w * 10 + 1, w * 10 + 1);
 
   button.parent("buttons");
   resetButton.parent("buttons");
   buttonsDiv.parent("body");
   myConvas.parent("body");
-  
-  
-  
-  cols = floor(width/w);
-  rows = floor(height/w);
+
+  cols = floor(width / w);
+  rows = floor(height / w);
   grid = create2D(rows, cols);
 
   resetGame();
-  
 }
 
-function FlagTime()
-{
-  if (flag)
-  {
+function FlagTime() {
+  if (flag) {
     button.addClass("notFlagged");
     button.removeClass("flagged");
     flag = false;
-  }
-    
-  else
-  {
+  } else {
     button.addClass("flagged");
     button.removeClass("notFlagged");
     flag = true;
@@ -74,17 +63,16 @@ function FlagTime()
 }
 
 function draw() {
-  if (timer > 0)
-  {
+  if (timer > 0) {
     background(220);
     textAlign(CENTER, CENTER);
     textSize(100);
-    text(timer, width/2, height/2);
-    if (frameCount % 60 == 0 && timer > 0) { // if the frameCount is divisible by 60, then a second has passed. it will stop at 0
-      timer --;
+    text(timer, width / 2, height / 2);
+    if (frameCount % 60 == 0 && timer > 0) {
+      // if the frameCount is divisible by 60, then a second has passed. it will stop at 0
+      timer--;
     }
-  }
-  else{
+  } else {
     background(255);
     for (let index = 0; index < rows; index++) {
       for (let jndex = 0; jndex < cols; jndex++) {
@@ -92,34 +80,25 @@ function draw() {
       }
     }
   }
-  
-   
 }
 
 function mousePressed() {
   for (let index = 0; index < rows; index++) {
     for (let jndex = 0; jndex < cols; jndex++) {
-      if (grid[index][jndex].contains(mouseX, mouseY))
-      {
-        if (flag)
-        {
+      if (grid[index][jndex].contains(mouseX, mouseY)) {
+        if (flag) {
           grid[index][jndex].flag = true;
-        }
-        else
-        {
+        } else {
           grid[index][jndex].flag = false;
           grid[index][jndex].reveal();
-          if (grid[index][jndex].bomb)
-            gameOver();
+          if (grid[index][jndex].bomb) gameOver();
         }
-        
       }
     }
   }
 }
 
-function gameOver()
-{
+function gameOver() {
   for (let index = 0; index < rows; index++) {
     for (let jndex = 0; jndex < cols; jndex++) {
       grid[index][jndex].revealed = true;
@@ -127,8 +106,7 @@ function gameOver()
   }
 }
 
-function create2D(rows, cols)
-{
+function create2D(rows, cols) {
   var arr = new Array(rows);
   for (let index = 0; index < arr.length; index++) {
     arr[index] = new Array(cols);
@@ -136,8 +114,7 @@ function create2D(rows, cols)
   return arr;
 }
 
-function resetGame()
-{
+function resetGame() {
   button.addClass("notFlagged");
   button.removeClass("flagged");
   flag = false;
@@ -150,12 +127,10 @@ function resetGame()
   while (index < totalBombs) {
     var i = floor(random(rows));
     var j = floor(random(cols));
-    if (grid[i][j].bomb != true)
-    {
+    if (grid[i][j].bomb != true) {
       grid[i][j].bomb = true;
       index++;
     }
-
   }
   for (let index = 0; index < rows; index++) {
     for (let jndex = 0; jndex < cols; jndex++) {
