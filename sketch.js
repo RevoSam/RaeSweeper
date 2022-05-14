@@ -13,7 +13,7 @@ let resetButton;
 let buttonsDiv;
 
 function preload() {
-  heart = loadImage("Pictures/Ei-heart.svg");
+  heart = loadImage("Pictures/heart-like-svgrepo-com.svg");
   flagIcon = loadImage("Pictures/Flag.svg");
 }
 
