@@ -13,13 +13,19 @@ function Cell(i, j, w) {
 Cell.prototype.show = function () {
   if (this.revealed) {
     if (this.bomb) {
-      image(
-        heart,
-        this.x + this.w * 0.25,
-        this.y + this.w * 0.25,
-        this.w * 0.5,
-        this.w * 0.5
-      );
+      fill(102, 51, 153);
+      rect(this.x, this.y, this.w, this.w);
+      textAlign(CENTER);
+      textSize(this.w * 0.5);
+      fill(255, 255, 255);
+      text("X", this.x + this.w * 0.5, this.y + this.w * 0.75);
+      //   image(
+      //     heart,
+      //     this.x + this.w * 0.25,
+      //     this.y + this.w * 0.25,
+      //     this.w * 0.5,
+      //     this.w * 0.5
+      //   );
     } else {
       fill(150);
       rect(this.x, this.y, this.w, this.w);
