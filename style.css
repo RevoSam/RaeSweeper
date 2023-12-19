@@ -10,7 +10,7 @@ display: inline-flex;
 margin:10px auto;
 }
 
-.button{
+.button, .select{
 margin:10px;
 width: 150px;
 padding:0.3em 1.2em;
@@ -28,7 +28,7 @@ transition: all 0.2s;
 position: relative;
 }
 
-.button:hover{
+.button:hover, .select:hover{
 border-color: rgba(255,255,255,1);
 }
 
@@ -62,4 +62,11 @@ border-color: rgba(255,255,255,1);
 .notFlagged{
   color:#FFFFFF;
   background-color: #9a4ef1;
+}
+
+
+.select{
+  background-color: rgb(0,159,214);
+  z-index: 999;
+  list-style: none;
 }
