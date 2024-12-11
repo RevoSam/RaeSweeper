@@ -99,9 +99,12 @@ Cell.prototype.countNeighbors = function () {
         this.j + j < cols
       ) {
         var neighbor = grid[this.i + i][this.j + j];
-        if (neighbor.bomb) total++;
+        if (neighbor.bomb)
+          total++;
       }
     }
   }
   this.neighborCount = total;
 };
+
+Cell.prototype.getNeighborCount = function(){return this.neighborCount};
